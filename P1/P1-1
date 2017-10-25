@@ -1,0 +1,16 @@
+sl_lanechange;
+r=sim('sl_lanechange');
+Y=r.find('y');
+T=r.find('t');
+subplot(2,2,1);
+plot(T,Y(:,1));
+xlabel('t'),ylabel('X');
+subplot(2,2,2);
+plot(T,Y(:,2));
+xlabel('t'),ylabel('Y');
+subplot(2,2,3);
+plot(T,Y(:,3));
+xlabel('t'),ylabel('theta');
+subplot(2,2,4);
+plot(T,Y(:,4));
+xlabel('t'),ylabel('alpha');
