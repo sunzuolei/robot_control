@@ -1,0 +1,19 @@
+import math
+def angdiff(*args):
+    L = []
+    for i in args:
+        L.append(i)
+    if len(L)==1:
+        d = L[0]
+    elif len(L) == 2:
+        d = L[0] - L[1]
+    else:
+        print 'error'
+        exit()
+    d = (d+math.pi)%(2*math.pi) - math.pi
+    print d
+
+
+angdiff(5)
+angdiff(5,8)
+angdiff(1,2,3)
