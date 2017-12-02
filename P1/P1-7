@@ -1,0 +1,16 @@
+function d = angdiff(th1, th2)                   
+    switch nargin                                 
+        case 1                                   
+            if length(th1) == 2                  
+                d = th1(1) - th1(2);   
+            else                                  
+                d = th1;
+            end
+        case 2                                   
+            if length(th1) > 1 && length(th2) > 1 
+                assert(all(size(th1) == size(th2)), ‘RTB:angdiff:badarg’, ‘vectors must be same shape’);                                     %th1和th2维度不同时，引发错误                  
+            end
+            d = th1 - th2;                        
+    end
+d = mod(d+pi, 2*pi) - pi;                         
+end
