@@ -1,0 +1,27 @@
+def Topolar():
+    import math
+    x=float(input('x='))
+    y = float(input('y='))
+    theta = input('theta=')
+    theta = math.radians(theta)
+    d = math.sqrt(x*x + y*y)
+    direction = 0
+    beta = math.tan(y/x)
+    alpha = -theta - beta
+    if alpha > math.pi/2 or alpha < -math.pi/2:
+		direction = -1
+    else:
+		direction = 1
+    if direction == -1:
+        beta = -math.atan2(y,x)
+        alpha = -theta - beta
+    if direction == 1:
+        beta = -math.atan2(-y,-x);
+        alpha = -theta - beta;
+   	if alpha > math.pi/2:
+		    alpha = math.pi/2
+    elif alpha < -math.pi/2:
+            alpha = -math.pi/2
+    print 'rho=%.2f,alpha=%.2f,beta=%.2f'%(d,alpha*180/math.pi,beta*180/math.pi)
+
+Topolar()
