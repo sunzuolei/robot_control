@@ -1,0 +1,6 @@
+sl_drivepose;
+xg=[5 5 pi/2];
+x0=[8 5 pi/2];
+r = sim('sl_drivepose');
+y=r.find('xout');
+plot(y(:,1),y(:,2));
