@@ -1,19 +1,5 @@
-import math
-def angdiff(*args):
-    L = []
-    for i in args:
-        L.append(i)
-    if len(L)==1:
-        d = L[0]
-    elif len(L) == 2:
-        d = L[0] - L[1]
-    else:
-        print 'error'
-        exit()
-    d = (d+math.pi)%(2*math.pi) - math.pi
-    print d
+sl_drivepoint;
+xg = [5 5];
+x0 = [8 5 pi/2];
+r = sim('sl_drivepoint')
 
-
-angdiff(5)
-angdiff(5,8)
-angdiff(1,2,3)
