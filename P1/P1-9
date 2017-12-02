@@ -1,0 +1,9 @@
+x1=linspace(10,50,380);
+y1=x1;
+x2=linspace(50,10,380);
+y2=x2;
+X=[x1';x2']';
+Y=[y1';y2']';
+Z2=[X;Y]';
+plot(X,Y);
+sl_pursuit;
