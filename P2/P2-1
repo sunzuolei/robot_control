@@ -1,0 +1,12 @@
+clear;clc;
+V = diag([0.02, 0.5*pi/180].^2);
+veh = Vehicle(V);
+veh.add_driver( RandomPathCircle(10,3,4) );
+veh.run();
+veh.plot_xy();
+hold on
+x1=linspace(-7,13,1000);
+y_sqrt=sqrt(10.^2-(x1-3).^2);
+y1=y_sqrt+4;
+y2=-y_sqrt+4;
+plot(x1,y1,'r',x1,y2,'r');
