@@ -1,0 +1,19 @@
+clear;clc;
+V = diag([0.02, 0.5*pi/180].^2);%协方差矩阵，采样间隔sigma d,sigma theta
+veh = Vehicle(V);%创建Vechine对象
+
+map = Map(20);%创建Map对象，包含20个特征物
+P0 = diag([0.005, 0.005, 0.001].^2);%定义初始协方差
+
+veh.add_driver( RandomPath(map.dim) );
+
+W = diag([0.1, 1*pi/180].^2);%设定传感器的不确定度
+sensor = RangeBearingSensor(veh, map, W);%为传感器建模
+
+ekf = EKF(veh, V, P0, sensor, W, map);%扩展卡尔曼滤波
+ekf.run(1000);%运行1000个时间步
+
+map.plot()
+veh.plot_xy();%画出滤波前机器人运动轨迹，蓝色
+ekf.plot_xy('r');%画出滤波后的机器人轨迹，红色
+ekf.plot_ellipse([], 'k');%画出误差椭圆
