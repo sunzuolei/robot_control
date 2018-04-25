@@ -1,0 +1,18 @@
+clear;clc
+V = diag([0.02, 0.5*pi/180].^2);
+veh = Vehicle(V);
+veh.add_driver( RandomPath(10) );
+veh.run();
+real=veh.x_hist(:,3);
+P0 = diag([0.005, 0.005, 0.001].^2);
+ekf = EKF(veh, V, P0);
+ekf.run(1000);
+estimated=[];
+for i=1:length(ekf.history)
+	h = ekf.history(i);
+	estimated(i,:) = h.x_est(1:3);
+end
+t=linspace(1,1000,1000);
+figure(2);
+plot(t,real, 'r' ,t,estimated(:,3), 'b');
+legend('real','estimated');
